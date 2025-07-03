@@ -12,9 +12,9 @@ const dotGothic16 = DotGothic16({
 })
 
 export const metadata: Metadata = {
-  title: "Pixel Breakout",
-  description: "Interactive pixel art website with breakout game",
-    generator: 'v0.dev'
+  title: "Han-Portfolio",
+  description: "Han's Portfolio",
+  generator: 'v0.dev'
 }
 
 export default function RootLayout({

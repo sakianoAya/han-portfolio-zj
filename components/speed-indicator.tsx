@@ -26,7 +26,7 @@ const SpeedIndicator: React.FC<SpeedIndicatorProps> = ({ speedLevel, maxSpeedLev
   return (
     <div className="fixed top-4 left-4 z-50 bg-black bg-opacity-50 p-3 rounded-lg">
       <div className="flex flex-col items-center">
-        <div className="text-sm font-dotgothic16 mb-1">速度等级</div>
+        <div className="text-sm font-dotgothic16 mb-1">スピード</div>
         <div className="flex items-center gap-2">
           <div className="text-xl font-bold">{speedLevel}</div>
           <div className="text-xs">/ {maxSpeedLevel}</div>
@@ -45,8 +45,8 @@ const SpeedIndicator: React.FC<SpeedIndicatorProps> = ({ speedLevel, maxSpeedLev
 
         {/* 速度等级标签 */}
         <div className="w-full flex justify-between mt-1">
-          <span className="text-xs">慢</span>
-          <span className="text-xs">快</span>
+          <span className="text-xs">L</span>
+          <span className="text-xs">H</span>
         </div>
       </div>
     </div>
