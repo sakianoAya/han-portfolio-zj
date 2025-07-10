@@ -63,6 +63,7 @@ export default function Home() {
     "Clip Studio": "https://www.clipstudio.net/",
     Pixijs:"https://pixijs.com/",
     "Tailwind CSS": "https://tailwindcss.com/",
+    unity: "https://unity.com/",
   }
 
   // 技術標籤組件
@@ -366,12 +367,12 @@ export default function Home() {
                 </div>
               </PixelBox>
 
-              {/* LINE STICKERS 專案 */}
+              {/* unity 專案 */}
               <PixelBox className="p-6 overflow-hidden group">
                 <div className="aspect-video bg-gray-800 mb-4 overflow-hidden rounded-lg">
                   <img
-                    src="/images/project/project04.jpg"
-                    alt="LINE STICKERS Project Preview"
+                    src="images/project/project04.jpg"
+                    alt="SILAS Project Preview"
                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                     onError={(e) => {
                       // 如果圖片載入失敗，顯示漸層背景
@@ -383,49 +384,38 @@ export default function Home() {
                 </div>
                 {isClient ? (
                   <PixelText
-                    text="LINE STICKERS"
+                    text="SILAS"
                     size="medium"
                     letterSpacing="normal"
                     className="mb-2"
                     wordGroups={[
                       [0, 1, 2, 3],
                       [5, 6, 7, 8, 9, 10, 11, 12],
-                    ]} // LINE + STICKERS
+                    ]} // unity
                   />
                 ) : (
                   <FallbackText text="LINE STICKERS" className="mb-2 text-xl font-bold" />
                 )}
                 <p className="font-dotgothic16 mb-4">
-                  Loading
-                </p>
+                  大学の卒業制作です、チームリーダーとしてUnityを用いたゲーム開発を統括しました。具体的には、プログラミング、アクション・戦闘システム設計、キャラクターのリギング・テクスチャリング、VFX開発、Unityシーンデザイン、そしてシェーダー開発を担当いたしました。</p>
 
                 {/* 技術標籤 */}
                 <div className="flex gap-2 items-center mb-4 flex-wrap">
                   <span className="text-sm font-dotgothic16">技術: </span>
-                  <TechTag tech="Line2D" />
-                  <TechTag tech="Clip Studio" />
-                  <TechTag tech="Photoshop" />
+                  <TechTag tech="unity" />
                 </div>
 
                 {/* GitHub 和 LINE Store 連結 */}
                 <div className="flex gap-4 items-center relative z-30">
+                
                   <a
-                    href="https://github.com/your-username/line-stickers"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-1 text-sm font-dotgothic16 hover:opacity-80 transition-opacity bg-gray-800 px-3 py-2 rounded-md hover:bg-gray-700"
-                  >
-                    <Github size={16} />
-                    <span>GitHub</span>
-                  </a>
-                  <a
-                    href="https://store.line.me/stickershop/product/your-sticker-id"
+                    href="https://youtu.be/1a5-siRwdvo"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-1 text-sm font-dotgothic16 hover:opacity-80 transition-opacity bg-gray-800 px-3 py-2 rounded-md hover:bg-gray-700"
                   >
                     <ExternalLink size={16} />
-                    <span>LINE Store</span>
+                    <span>Youtude Video</span>
                   </a>
                 </div>
               </PixelBox>
