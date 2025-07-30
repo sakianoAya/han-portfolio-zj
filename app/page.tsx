@@ -271,6 +271,7 @@ export default function Home() {
                 )}
                 <p className="font-dotgothic16 mb-4">
                   単語学習ウェブサイト。ヒロインは私が描いた「そらちゃん」で、Spine2Dを使ってアニメーション化し、ウェブサイト上でユーザーとインタラクションできるようにしました。
+                  学内で人気投票第一位を獲得しました。
                 </p>
 
                 {/* 技術標籤 */}
@@ -305,6 +306,74 @@ export default function Home() {
                   </a>
                 </div>
               </PixelBox>
+
+
+              {/* spineshowcase 專案 */}
+              <PixelBox className="p-6 overflow-hidden group">
+                <div className="aspect-video bg-gray-800 mb-4 overflow-hidden rounded-lg">
+                  <img
+                    src="images/project/project05.jpg"
+                    alt="spineshowcase Project Preview"
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    onError={(e) => {
+                      // 如果圖片載入失敗，顯示漸層背景
+                      e.currentTarget.style.display = "none"
+                      e.currentTarget.parentElement!.style.background =
+                        "linear-gradient(to bottom right, #10b981, #eab308)"
+                    }}
+                  />
+                </div>
+                {isClient ? (
+                  <PixelText
+                    text="SPINWESHOWCASE"
+                    size="medium"
+                    letterSpacing="normal"
+                    className="mb-2"
+                    wordGroups={[
+                      [0, 1, 2, 3, 4, 5],
+                      [7, 8, 9, 10],
+                    ]} // SPINWESHOWCASE
+                  />
+                ) : (
+                  <FallbackText text="SPINWESHOWCASE" className="mb-2 text-xl font-bold" />
+                )}
+                <p className="font-dotgothic16 mb-4">
+                  Spine2Dのアニメーションを紹介するウェブサイト。Spine2Dのアニメーションを使って、インタラクティブな体験を提供することを目的としています。
+                </p>
+
+                {/* 技術標籤 */}
+                <div className="flex gap-2 items-center mb-4 flex-wrap">
+                  <span className="text-sm font-dotgothic16">技術: </span>
+                  <TechTag tech="Next.js" />
+                  <TechTag tech="React" />
+                  <TechTag tech="TypeScript" />
+                  <TechTag tech="Spine2D" />
+                  <TechTag tech="Tailwind CSS" />
+                </div>
+
+                {/* GitHub 和 Live Demo 連結 */}
+                <div className="flex gap-4 items-center relative z-30">
+                  <a
+                    href="https://github.com/sakianoAya/spinshowcase"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1 text-sm font-dotgothic16 hover:opacity-80 transition-opacity bg-gray-800 px-3 py-2 rounded-md hover:bg-gray-700"
+                  >
+                    <Github size={16} />
+                    <span>GitHub</span>
+                  </a>
+                  <a
+                    href="https://spinshowcase.vercel.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1 text-sm font-dotgothic16 hover:opacity-80 transition-opacity bg-gray-800 px-3 py-2 rounded-md hover:bg-gray-700"
+                  >
+                    <ExternalLink size={16} />
+                    <span>Live Demo</span>
+                  </a>
+                </div>
+              </PixelBox>
+              
 
               {/* KABUKICHO 專案 */}
               <PixelBox className="p-6 overflow-hidden group">
