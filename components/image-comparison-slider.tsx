@@ -35,7 +35,7 @@ export default function ImageComparisonSlider() {
   const imageComparisons: ImageComparison[] = [
     {
       title: "修圖作品 1",
-      description: "這是第一張修圖作品的說明文字。展示了色彩調整與細節優化的技術。",
+      description: "最近、Lightroomでの色調補正を試しています。和風のレトロな雰囲気がもたらす「クリーム感」（クリーミーな質感）がとても好きで、次の旅行でそのような写真を撮ろうかと考えています。",
       beforeImage: "/unedited-landscape.png",
       afterImage: "/professionally-edited-vibrant-landscape-photo.jpg",
       enableComparison: true, // Enable before/after comparison
@@ -49,7 +49,7 @@ export default function ImageComparisonSlider() {
     },
     {
       title: "修圖作品 3",
-      description: "這是第三張修圖作品的說明文字。展示專業修圖與後期處理的完整流程。",
+      description: "AIを活用して加筆修正した作品です。元カノをイメージのモデルとし、これをLive2Dと融合させてウェブサイトを制作しました。この作品で学内人気賞を受賞しました。",
       beforeImage: "/ordinary-product-photo.jpg",
       afterImage: "/professional-product-photography-with-studio-light.jpg",
       enableComparison: false, // Single image only (no comparison)

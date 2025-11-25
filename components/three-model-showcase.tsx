@@ -13,7 +13,7 @@ const models = [
     id: 1,
     path: "/assets/3d/duck.glb",
     title: "3D Model",
-    description: "這是3D模型展示。使用Blender進行建模，並透過three.js在網頁上呈現。",
+    description: `将来性の高い3D分野の技術を習得するため、大学時代の経験を活かし、オンライン教材を通じてBlenderとthree.jsを習得しました。本作品では、モデリングだけでなく、シェーダー（Shader）やポストプロセス（Post Processing）も積極的に学習・活用しています。モデルの制作から、Webでの表現に欠かせない技術まで、意欲的に取り組んでいる成長性の高いポートフォリオです。`,
     scale: 2,
     position: [0, -1, 0] as [number, number, number],
     demoUrl: null,
@@ -77,7 +77,7 @@ export default function ThreeModelShowcase() {
         <div className="max-w-4xl mx-auto">
           <PixelBox className="p-8">
             <div className="text-center font-dotgothic16">
-              <p className="mb-4">3D模型展示區域</p>
+              <p className="mb-4">3Dエリア</p>
               <p className="text-sm opacity-70">準備中...</p>
             </div>
           </PixelBox>
@@ -136,6 +136,7 @@ export default function ThreeModelShowcase() {
             />
             <p className="font-dotgothic16 mb-4 text-gray-300 text-base leading-relaxed">{currentModel.description}</p>
             <div className="flex gap-2 items-center mb-4 flex-wrap">
+              <p className="mb-4 text-red-600">バージョンの更新により、モデルがスムーズに表示できません。恐れ入りますが、以下の画像（image）でご覧ください。大変申し訳ございません。</p>
               <span className="text-sm font-dotgothic16">技術: </span>
               <TechTag tech="Blender" />
               <TechTag tech="three.js" />

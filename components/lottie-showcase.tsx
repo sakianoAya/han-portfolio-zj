@@ -21,15 +21,80 @@ interface LottieWork {
 const lottieWorks: LottieWork[] = [
   {
     id: "work-1",
-    jsonPath: "/lottie/animation-1.json",
+    jsonPath: "/lottie/animation-1.json", 
     demoUrl: "#",
   },
   {
     id: "work-2",
-    jsonPath: "/lottie/animation-2.json",
+    jsonPath: "/lottie/data1-1.json",
     demoUrl: "#",
   },
-]
+  {
+    id: "work-3",
+    jsonPath: "/lottie/data1-2.json",
+    demoUrl: "#",
+  },
+  {
+    id: "work-4",
+    jsonPath: "/lottie/data2-1.json",
+    demoUrl: "#",
+  },
+  {
+    id: "work-5",
+    jsonPath: "/lottie/data2-2.json",
+    demoUrl: "#",
+  },
+  {
+    id: "work-6",
+    jsonPath: "/lottie/data3-1.json",
+    demoUrl: "#",
+  },
+  {
+    id: "work-7",
+    jsonPath: "/lottie/data3-2.json",
+    demoUrl: "#",
+  },
+  {
+    id: "work-8",
+    jsonPath: "/lottie/data4-1.json",
+    demoUrl: "#",
+  },
+  {
+    id: "work-9",
+    jsonPath: "/lottie/data4-2.json",
+    demoUrl: "#",
+  },
+  {
+    id: "work-10",
+    jsonPath: "/lottie/data5-1.json",
+    demoUrl: "#",
+  },
+  {
+    id: "work-11",
+    jsonPath: "/lottie/data5-2.json",
+    demoUrl: "#",
+  },
+  {
+    id: "work-12",
+    jsonPath: "/lottie/data6-1.json",
+    demoUrl: "#",
+  },
+  {
+    id: "work-13",
+    jsonPath: "/lottie/data6-2.json",
+    demoUrl: "#",
+  },
+  {
+    id: "work-14",
+    jsonPath: "/lottie/data7-1.json",
+    demoUrl: "#",
+  },
+  {
+    id: "work-15",
+    jsonPath: "/lottie/data7-2.json",
+    demoUrl: "#",
+  },
+];
 
 const DEFAULT_PROJECT_TITLE = "Lottie Animation"
 const DEFAULT_PROJECT_DESCRIPTION =
@@ -167,7 +232,7 @@ export default function LottieShowcase() {
             {currentWork.demoUrl && (
               <div className="mb-4">
                 <a
-                  href={currentWork.demoUrl}
+                  href="http://test.macgo.cn/index"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-4 py-2 border-2 rounded-lg font-dotgothic16 hover:bg-white hover:text-black transition-colors relative z-30 text-sm"
