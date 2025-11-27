@@ -1,5 +1,7 @@
 "use client"
 
+import type React from "react"
+
 import { useEffect, useRef, useState } from "react"
 import { PixelBox } from "@/components/pixel-box"
 import PixelText from "@/components/pixel-text"
@@ -27,6 +29,7 @@ export default function ImageComparisonSlider() {
   const [sliderPosition, setSliderPosition] = useState(50)
   const [isDragging, setIsDragging] = useState(false)
   const [isClient, setIsClient] = useState(false)
+  const [imageAspectRatio, setImageAspectRatio] = useState<number>(4 / 3)
 
   useEffect(() => {
     setIsClient(true)
@@ -34,24 +37,46 @@ export default function ImageComparisonSlider() {
 
   const imageComparisons: ImageComparison[] = [
     {
+      title: "修圖作品 5",
+      description: "網上のチュートリアルを参考に作成した3Dモデルを、2026年3月に開催予定の未来創造展に出展します。",
+      beforeImage: "/images/blender.png",
+      afterImage: "/images/blender.png",
+      enableComparison: false, // Single image only (no comparison)
+    },
+    {
+      title: "修圖作品 4",
+      description: "AIを活用して加筆修正した作品です。元カノをイメージのモデルとし、これをLive2Dと融合させてウェブサイトを制作しました。この作品で学内人気賞を受賞しました。",
+      beforeImage: "/images/sieru.png",
+      afterImage: "/images/sieru.png",
+      enableComparison: false, // Single image only (no comparison)
+    },
+    {
+      title: "修圖作品 3",
+      description: "AIを活用して加筆修正した作品です",
+      beforeImage: "/images//firework.png",
+      afterImage: "/images//firework.png",
+      enableComparison: false, // Single image only (no comparison)
+    },
+    {
       title: "修圖作品 1",
-      description: "最近、Lightroomでの色調補正を試しています。和風のレトロな雰囲気がもたらす「クリーム感」（クリーミーな質感）がとても好きで、次の旅行でそのような写真を撮ろうかと考えています。",
-      beforeImage: "/unedited-landscape.png",
-      afterImage: "/professionally-edited-vibrant-landscape-photo.jpg",
+      description: "最近、Lightroomでの色調補正を試しています。日本の青を際立たせるような効果（トウキョウブルー・エフェクト）がとても好きで、次の旅行でそのような写真を撮ろうかと考えています。",
+      beforeImage: "/images/fix_old2.jpg",
+      afterImage: "/images/fix_new2.jpg",
       enableComparison: true, // Enable before/after comparison
     },
     {
       title: "修圖作品 2",
-      description: "這是第二張修圖作品的說明文字。重點展示光影處理與對比度調整。",
-      beforeImage: "/dark-underexposed-portrait-photo.jpg",
-      afterImage: "/professionally-lit-portrait-photo-with-perfect-exp.jpg",
+      description: "これはLightroomでの練習作品です。主な練習の目的は、絵画のように美しい肌の質感を表現することです。",
+      beforeImage: "/images/fix_old1.jpg",
+      afterImage: "/images/fix_new1.jpg",
       enableComparison: true, // Enable before/after comparison
     },
+    
     {
-      title: "修圖作品 3",
-      description: "AIを活用して加筆修正した作品です。元カノをイメージのモデルとし、これをLive2Dと融合させてウェブサイトを制作しました。この作品で学内人気賞を受賞しました。",
-      beforeImage: "/ordinary-product-photo.jpg",
-      afterImage: "/professional-product-photography-with-studio-light.jpg",
+      title: "修圖作品 5",
+      description: "AIを活用して加筆修正した作品です。spine2Dでアニメーション化し、ウェブサイトに組み込みました。",
+      beforeImage: "/images/pinkbunny.png",
+      afterImage: "/images/pinkbunny.png",
       enableComparison: false, // Single image only (no comparison)
     },
   ]
@@ -66,6 +91,12 @@ export default function ImageComparisonSlider() {
   const prevImage = () => {
     setCurrentIndex((prev) => (prev - 1 + imageComparisons.length) % imageComparisons.length)
     setSliderPosition(50)
+  }
+
+  const handleImageLoad = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    const img = e.currentTarget
+    const ratio = img.naturalWidth / img.naturalHeight
+    setImageAspectRatio(ratio)
   }
 
   const handleMouseDown = () => {
@@ -135,15 +166,20 @@ export default function ImageComparisonSlider() {
           {currentWork.enableComparison ? (
             <div
               ref={containerRef}
-              className="relative aspect-[4/3] bg-gray-900 rounded-lg overflow-hidden mb-6 select-none border border-gray-700"
+              className="relative w-full bg-gray-900 rounded-lg overflow-hidden mb-6 select-none border border-gray-700"
+              style={{
+                aspectRatio: imageAspectRatio,
+                maxHeight: "600px",
+              }}
             >
               <Image
                 src={currentWork.afterImage || "/placeholder.svg"}
                 alt={`${currentWork.title} - 修圖後`}
                 fill
-                className="object-cover"
+                className="object-contain"
                 draggable="false"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+                onLoad={handleImageLoad}
               />
 
               <div
@@ -156,7 +192,7 @@ export default function ImageComparisonSlider() {
                   src={currentWork.beforeImage || "/placeholder.svg"}
                   alt={`${currentWork.title} - 修圖前`}
                   fill
-                  className="object-cover"
+                  className="object-contain"
                   draggable="false"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
                 />
@@ -206,14 +242,21 @@ export default function ImageComparisonSlider() {
               </div>
             </div>
           ) : (
-            <div className="relative aspect-[4/3] bg-gray-900 rounded-lg overflow-hidden mb-6 border border-gray-700">
+            <div
+              className="relative w-full bg-gray-900 rounded-lg overflow-hidden mb-6 border border-gray-700"
+              style={{
+                aspectRatio: imageAspectRatio,
+                maxHeight: "600px",
+              }}
+            >
               <Image
                 src={currentWork.afterImage || "/placeholder.svg"}
                 alt={currentWork.title}
                 fill
-                className="object-cover"
+                className="object-contain"
                 draggable="false"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+                onLoad={handleImageLoad}
               />
             </div>
           )}
@@ -239,6 +282,7 @@ export default function ImageComparisonSlider() {
               <span className="text-sm font-dotgothic16">技術: </span>
               <TechTag tech="Lightroom" />
               <TechTag tech="Photoshop" />
+              <TechTag tech="Clip" />
             </div>
           </div>
 
