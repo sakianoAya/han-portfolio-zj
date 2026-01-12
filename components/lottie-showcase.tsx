@@ -11,6 +11,8 @@ import { TechTag } from "@/components/tech-tag"
 // 動態導入 Lottie 組件（避免 SSR 問題）
 const Lottie = dynamic(() => import("lottie-react"), { ssr: false })
 
+type Language = "jp" | "zh"
+
 interface LottieWork {
   id: string
   jsonPath: string
@@ -96,16 +98,53 @@ const lottieWorks: LottieWork[] = [
   },
 ];
 
-const DEFAULT_PROJECT_TITLE = "Lottie Animation"
-const DEFAULT_PROJECT_DESCRIPTION =
-  "Macgo製品ウェブサイト向け、クライアントワーク向けとして制作した、ベクターアニメーションです。Spineアニメーションの経験を応用し、Illustratorで作成した素材をAfter EffectsでLottie化。ウェブサイトでのスムーズな動作と、高いデザイン性を両立させた高品質なアニメーションを提供しました。"
+const uiTranslations = {
+  jp: {
+    title: "LOTTIE ANIMATION",
+    titleWordGroups: [[0, 1, 2, 3, 4, 5], [7, 8, 9, 10, 11, 12, 13, 14, 15]],
+    fallbackTitle: "LOTTIE WORKS",
+    description: "Macgo製品ウェブサイト向け、クライアントワーク向けとして制作した、ベクターアニメーションです。Spineアニメーションの経験を応用し、Illustratorで作成した素材をAfter EffectsでLottie化。ウェブサイトでのスムーズな動作と、高いデザイン性を両立させた高品質なアニメーションを提供しました。",
+    loading: "読み込み中...",
+    error: "アニメーションファイルが見つかりません",
+    checkJson: "JSONファイルを確認してください",
+    tech: "技術",
+    prev: "前へ",
+    next: "次へ",
+    emptyTitle: "Lottie作品を追加してください",
+    emptyMsg1: "public/lottie/ にJSONファイルを配置し、",
+    emptyMsg2: "lottieWorks配列を更新してください",
+    demo: "DEMO"
+  },
+  zh: {
+    title: "LOTTIE 動畫",
+    titleWordGroups: [[0, 1, 2, 3, 4, 5], [7, 8]],
+    fallbackTitle: "LOTTIE 作品",
+    description: "為 Macgo 產品網站及客戶專案製作的向量動畫。應用 Spine 動畫的經驗，將 Illustrator 製作的素材透過 After Effects 轉為 Lottie。提供了兼具網站流暢運作與高設計性的高品質動畫。",
+    loading: "載入中...",
+    error: "找不到動畫檔案",
+    checkJson: "請確認 JSON 檔案",
+    tech: "技術",
+    prev: "上一頁",
+    next: "下一頁",
+    emptyTitle: "請新增 Lottie 作品",
+    emptyMsg1: "請將 JSON 檔案放置於 public/lottie/，",
+    emptyMsg2: "並更新 lottieWorks 陣列",
+    demo: "演示"
+  }
+}
 
-export default function LottieShowcase() {
+interface Props {
+  language: Language
+}
+
+export default function LottieShowcase({ language }: Props) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isClient, setIsClient] = useState(false)
   const [animationData, setAnimationData] = useState<any>(null)
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
+  
+  const t = uiTranslations[language]
 
   useEffect(() => {
     setIsClient(true)
@@ -155,34 +194,29 @@ export default function LottieShowcase() {
   }
 
   const currentWork = lottieWorks[currentIndex]
-  const displayTitle = DEFAULT_PROJECT_TITLE
-  const displayDescription = DEFAULT_PROJECT_DESCRIPTION
 
   if (lottieWorks.length === 0) {
     return (
       <section id="lottie-works" className="mb-32">
         {isClient ? (
           <PixelText
-            text="LOTTIE ANIMATION"
+            text={t.title}
             size="large"
             letterSpacing="wide"
             className="mb-8 sm:mb-16 text-center w-full px-2"
-            wordGroups={[
-              [0, 1, 2, 3, 4, 5],
-              [7, 8, 9, 10, 11, 12, 13, 14, 15],
-            ]}
+            wordGroups={t.titleWordGroups}
           />
         ) : (
-          <FallbackText text="LOTTIE WORKS" className="mb-8 sm:mb-16 text-center text-3xl sm:text-4xl font-bold" />
+          <FallbackText text={t.fallbackTitle} className="mb-8 sm:mb-16 text-center text-3xl sm:text-4xl font-bold" />
         )}
 
         <div className="max-w-4xl mx-auto">
           <PixelBox className="p-6 md:p-8">
             <div className="aspect-video bg-gray-900 rounded-lg flex items-center justify-center">
               <div className="text-center text-gray-500 font-dotgothic16">
-                <p className="text-lg mb-2">Lottie作品を追加してください</p>
-                <p className="text-sm">public/lottie/ にJSONファイルを配置し、</p>
-                <p className="text-sm">lottieWorks配列を更新してください</p>
+                <p className="text-lg mb-2">{t.emptyTitle}</p>
+                <p className="text-sm">{t.emptyMsg1}</p>
+                <p className="text-sm">{t.emptyMsg2}</p>
               </div>
             </div>
           </PixelBox>
@@ -197,12 +231,12 @@ export default function LottieShowcase() {
         <PixelBox className="p-6 md:p-8">
           {/* Lottie 動畫顯示區域 */}
           <div className="aspect-video bg-gray-900 rounded-lg mb-6 flex items-center justify-center overflow-hidden relative">
-            {loading && <div className="text-gray-500 font-dotgothic16">読み込み中...</div>}
+            {loading && <div className="text-gray-500 font-dotgothic16">{t.loading}</div>}
 
             {error && !loading && (
               <div className="text-red-500 font-dotgothic16 text-center px-4">
                 <p className="mb-2">{error}</p>
-                <p className="text-sm text-gray-400">JSONファイルを確認してください</p>
+                <p className="text-sm text-gray-400">{t.checkJson}</p>
               </div>
             )}
 
@@ -214,20 +248,17 @@ export default function LottieShowcase() {
           <div className="mb-6">
             {isClient ? (
               <PixelText
-                text={displayTitle}
+                text={t.title}
                 size="medium"
                 letterSpacing="normal"
                 className="mb-2"
-                wordGroups={[
-                  [0, 1, 2, 3, 4, 5],
-                  [7, 8, 9, 10, 11, 12, 13, 14],
-                ]}
+                wordGroups={t.titleWordGroups}
               />
             ) : (
-              <FallbackText text={displayTitle} className="mb-2 text-xl font-bold" />
+              <FallbackText text={t.title} className="mb-2 text-xl font-bold" />
             )}
 
-            <p className="font-dotgothic16 mb-4 text-gray-300 text-base leading-relaxed">{displayDescription}</p>
+            <p className="font-dotgothic16 mb-4 text-gray-300 text-base leading-relaxed">{t.description}</p>
 
             {currentWork.demoUrl && (
               <div className="mb-4">
@@ -237,7 +268,7 @@ export default function LottieShowcase() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-4 py-2 border-2 rounded-lg font-dotgothic16 hover:bg-white hover:text-black transition-colors relative z-30 text-sm"
                 >
-                  <span>DEMO</span>
+                  <span>{t.demo}</span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
@@ -258,7 +289,7 @@ export default function LottieShowcase() {
             )}
 
             <div className="flex gap-2 items-center mb-4 flex-wrap">
-              <span className="text-sm font-dotgothic16">技術: </span>
+              <span className="text-sm font-dotgothic16">{t.tech}: </span>
               <TechTag tech="Illustrator" />
               <TechTag tech="After Effects" />
               <TechTag tech="Lottie" />
@@ -273,7 +304,7 @@ export default function LottieShowcase() {
               aria-label="Previous animation"
             >
               <ChevronLeft size={20} />
-              <span className="hidden sm:inline">前へ</span>
+              <span className="hidden sm:inline">{t.prev}</span>
             </button>
 
             {/* 進度指示器 */}
@@ -295,7 +326,7 @@ export default function LottieShowcase() {
               className="flex items-center gap-2 px-4 py-2 rounded-lg border-2 font-dotgothic16 hover:bg-white hover:text-black transition-colors relative z-30"
               aria-label="Next animation"
             >
-              <span className="hidden sm:inline">次へ</span>
+              <span className="hidden sm:inline">{t.next}</span>
               <ChevronRight size={20} />
             </button>
           </div>

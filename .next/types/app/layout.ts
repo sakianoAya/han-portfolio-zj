@@ -1,4 +1,4 @@
-// File: C:\Users\owner\Downloads\fork-of-hanpo\app\layout.tsx
+// File: D:\React\han-portfolio-zj\app\layout.tsx
 import * as entry from '../../../app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
