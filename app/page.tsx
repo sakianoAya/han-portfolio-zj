@@ -7,7 +7,7 @@ import GameControls from "@/components/game-controls"
 import { PixelBox } from "@/components/pixel-box"
 import SpeedIndicator from "@/components/speed-indicator"
 import { ThemeProvider } from "@/contexts/theme-context"
-import { ExternalLink, Mail, Github, Linkedin } from "lucide-react"
+import { ExternalLink, Mail, Github, Linkedin, Trophy } from "lucide-react"
 import LottieShowcase from "@/components/lottie-showcase"
 import ImageComparisonSlider from "@/components/image-comparison-slider"
 import ThreeModelShowcase from "@/components/three-model-showcase"
@@ -38,11 +38,28 @@ const translations = {
     ),
     viewWork: "作品を見る",
     contact: "お問い合わせ",
-    tokyosoundsDesc: "Google Lyriaを用いて東京上空での紙飛機の飛行をシミュレートする3Dインタラクティブウェブアプリ。Next.jsとR3Fで構築されています。 また、AI生成音楽機能を搭載し、東京上空を飛行中に異なる音楽を聴くことができ、ユーザー体験を向上させています。\nこれは学内のチームコラボレーションプロジェクトであり、私はフロントエンド開発と3Dインタラクションデザインを担当しました。",
+    tokyosoundsDesc: (
+      <>
+        Google Lyriaを用いて東京上空での紙飛機の飛行をシミュレートする3Dインタラクティブウェブアプリ。Next.jsとR3Fで構築されています。 また、AI生成音楽機能を搭載し、東京上空を飛行中に異なる音楽を聴くことができ、ユーザー体験を向上させています。
+        <br />
+        これは学内のチームコラボレーションプロジェクトであり、私はフロントエンド開発と3Dインタラクションデザインを担当しました。
+        <br />
+        <span className="text-yellow-400 inline-flex items-center gap-1 mt-1">
+          <Trophy size={16} /> 未来創造展2026 企業賞 Microsoft賞 受賞
+        </span>
+      </>
+    ),
     fuwariDesc: "ECサイト「ふわり」の紹介サイト。かわいいケーキとスイーツを販売しています。 このプロジェクトでは、Next.jsを使用して高性能なフロントエンドを構築し、three.jsとシェーダーを活用して3D製品表示効果を実現し、ユーザー体験を向上させました。また、サイトの運営を支える堅牢なバックエンドアーキテクチャも構築しました。",
     pixelBreakoutDesc: "私のポートフォリオは、ブロック崩しのクラシックゲームを融合させています。 このゲームは、私がIT業界に足を踏み入れたきっかけとなったものであり、私の個人的なスタイルと組み合わせて、ユニークなポートフォリオサイトを作成しました。",
-    toeicGirlDesc:
-      "単語学習ウェブサイト。ヒロインは私が描いた「そらちゃん」で、Spine2Dを使ってアニメーション化し、ウェブサイト上でユーザーとインタラクションできるようにしました。\n学内で人気投票第一位を獲得しました。",
+    toeicGirlDesc: (
+      <>
+        単語学習ウェブサイト。ヒロインは私が描いた「そらちゃん」で、Spine2Dを使ってアニメーション化し、ウェブサイト上でユーザーとインタラクションできるようにしました。
+        <br />
+        <span className="text-yellow-400 inline-flex items-center gap-1 mt-1">
+          <Trophy size={16} /> 2025 HAL大賞 人気賞 受賞
+        </span>
+      </>
+    ),
     spineShowcaseDesc:
       "Spine2Dのアニメーションを紹介するウェブサイト。Spine2Dのアニメーションを使って、インタラクティブな体験を提供することを目的としています。",
     kabukichoDesc:
@@ -73,11 +90,28 @@ const translations = {
     ),
     viewWork: "查看作品",
     contact: "聯絡我",
-    tokyosoundsDesc: "一款結合了 Google 地圖逼真 3D 圖塊和 GoogleLyria 的 3D 互動網頁應用，用於模擬紙飛機在東京上空飛行。該應用程式基於 Next.js 和 R3F 框架建構。且搭載了ai生成音樂功能,漫遊在東京上空時能聽到不同的音樂,提升用戶體驗 \n這是校內團隊協作專案，我負責前端開發與3D互動設計。",
+    tokyosoundsDesc: (
+      <>
+        一款結合了 Google 地圖逼真 3D 圖塊和 Google Lyria 的 3D 互動網頁應用，用於模擬紙飛機在東京上空飛行。該應用程式基於 Next.js 和 R3F 框架建構。且搭載了 AI 生成音樂功能，漫遊在東京上空時能聽到不同的音樂，提升用戶體驗。
+        <br />
+        這是校內團隊協作專案，我負責前端開發與 3D 互動設計。
+        <br />
+        <span className="text-yellow-400 inline-flex items-center gap-1 mt-1">
+          <Trophy size={16} /> 未來創造展 2026 企業獎 Microsoft 獎 獲獎
+        </span>
+      </>
+    ),
     fuwariDesc: "介紹電商網站「ふわり」。販售可愛的蛋糕和甜點。這個專案的特點是使用 Next.js 建立高效能的前端，並利用three.js和shader實現3D產品展示效果，提升用戶體驗。且建立了良好的後端架構以支援網站運作。",
     pixelBreakoutDesc: "我的作品集網站，融合了經典的打磚塊遊戲。聯想到最初讓我踏入it業界的遊戲，並將其與我的個人風格結合，打造出獨特的作品集網站。",
-    toeicGirlDesc:
-      "單字學習網站。女主角是我繪製的「Sora醬」，使用 Spine2D 製作動畫，讓她能在網站上與使用者互動。\n獲得校內人氣投票第一名。",
+    toeicGirlDesc: (
+      <>
+        單字學習網站。女主角是我繪製的「Sora醬」，使用 Spine2D 製作動畫，讓她能在網站上與使用者互動。
+        <br />
+        <span className="text-yellow-400 inline-flex items-center gap-1 mt-1">
+          <Trophy size={16} /> 2025 HAL 大賞 人氣獎 獲獎
+        </span>
+      </>
+    ),
     spineShowcaseDesc: "介紹 Spine2D 動畫的網站。這相當於我的spine2D作品集，目的是利用Spine2D動畫來提供互動式體驗。",
     kabukichoDesc: "介紹歌舞伎町的網站。是以歌舞伎町華麗的夜景和霓虹燈為靈感製作的地區介紹網站。",
     silasDesc:
