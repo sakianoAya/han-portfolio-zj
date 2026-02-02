@@ -24,6 +24,14 @@ type ImageComparison = {
 const comparisonsData = {
   jp: [
     {
+      title: "3Dアニメーション",
+      description: "Blenderで作成した3Dアニメーション作品です。",
+      beforeImage: "/assets/3d/0001-0144.mp4",
+      afterImage: "/assets/3d/0001-0144.mp4",
+      enableComparison: false,
+      technologies: ["Blender"],
+    },
+    {
       title: "3Dモデル",
       description: "ネット上のチュートリアルを参考に作成した3Dモデルを、2026年3月に開催予定の未来創造展に出展します。",
       beforeImage: "/images/blender.png",
@@ -73,6 +81,14 @@ const comparisonsData = {
     },
   ],
   zh: [
+    {
+      title: "3D 動畫",
+      description: "使用 Blender 創作的 3D 動畫作品。",
+      beforeImage: "/assets/3d/0001-0144.mp4",
+      afterImage: "/assets/3d/0001-0144.mp4",
+      enableComparison: false,
+      technologies: ["Blender"],
+    },
     {
       title: "3D 模型",
       description: "參考網路教學製作的 3D 模型，預計於 2026 年 3 月舉辦的未來創造展中展出。",
@@ -335,15 +351,31 @@ export default function ImageComparisonSlider({ language }: Props) {
                 maxHeight: "600px",
               }}
             >
-              <Image
-                src={currentWork.afterImage || "/placeholder.svg"}
-                alt={currentWork.title}
-                fill
-                className="object-contain"
-                draggable="false"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
-                onLoad={handleImageLoad}
-              />
+              {currentWork.afterImage.toLowerCase().endsWith(".mp4") ? (
+                <video
+                  src={currentWork.afterImage}
+                  className="w-full h-full object-contain"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  controls
+                  onLoadedMetadata={(e) => {
+                    const video = e.currentTarget
+                    setImageAspectRatio(video.videoWidth / video.videoHeight)
+                  }}
+                />
+              ) : (
+                <Image
+                  src={currentWork.afterImage || "/placeholder.svg"}
+                  alt={currentWork.title}
+                  fill
+                  className="object-contain"
+                  draggable="false"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+                  onLoad={handleImageLoad}
+                />
+              )}
             </div>
           )}
 
