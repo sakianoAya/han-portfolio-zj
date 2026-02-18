@@ -534,7 +534,7 @@ export default function Home() {
               <PixelBox className="p-6 overflow-hidden group">
                 <div className="aspect-video bg-gray-800 mb-4 overflow-hidden rounded-lg">
                   <img
-                    src="images/project/project05.jpg"
+                    src="images/project/project06.png"
                     alt="spineshowcase Project Preview"
                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                     onError={(e) => {
