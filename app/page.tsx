@@ -62,6 +62,8 @@ const translations = {
     ),
     spineShowcaseDesc:
       "Spine2Dのアニメーションを紹介するウェブサイト。Spine2Dのアニメーションを使って、インタラクティブな体験を提供することを目的としています。",
+    unityandwevDesc:
+      "本プロジェクトは日本のパチンコ文化から着想を得た、UnityとNext.jsのハイブリッドWebアプリケーションです。技術的な実現可能性を検証するための「概念実証（PoC）」として、わずか2日間でスクラッチから構築しました。現在は実験段階ですが、物理エンジンとWebフロントエンドの高度な連携を実証しています",
     kabukichoDesc:
       "歌舞伎町を紹介するウェブサイト。歌舞伎町の華やかな夜景とネオンをインスピレーションに作成した地域紹介サイトです。",
     silasDesc:
@@ -112,6 +114,8 @@ const translations = {
         </span>
       </>
     ),
+    unityandwevDesc:
+    "本專案靈感來自日本的彈珠台文化，是一個結合 Unity 和 Next.js 的混合式網頁應用。作為技術可行性的驗證（PoC），我在短短兩天內從零開始構建了這個應用，目前處於實驗階段，但已經展示了物理引擎與網頁前端的高度協同。",
     spineShowcaseDesc: "介紹 Spine2D 動畫的網站。這相當於我的spine2D作品集，目的是利用Spine2D動畫來提供互動式體驗。",
     kabukichoDesc: "介紹歌舞伎町的網站。是以歌舞伎町華麗的夜景和霓虹燈為靈感製作的地區介紹網站。",
     silasDesc:
@@ -525,6 +529,71 @@ export default function Home() {
                     </a>
                   </div>
                 </PixelBox>
+                
+                {/* unity&web 專案 */}
+              <PixelBox className="p-6 overflow-hidden group">
+                <div className="aspect-video bg-gray-800 mb-4 overflow-hidden rounded-lg">
+                  <img
+                    src="images/project/project05.jpg"
+                    alt="spineshowcase Project Preview"
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    onError={(e) => {
+                      // 如果圖片載入失敗，顯示漸層背景
+                      e.currentTarget.style.display = "none"
+                      e.currentTarget.parentElement!.style.background =
+                        "linear-gradient(to bottom right, #10b981, #eab308)"
+                    }}
+                  />
+                </div>
+                {isClient ? (
+                  <PixelText
+                    text="patinkoball & slot machine"
+                    size="medium"
+                    letterSpacing="normal"
+                    className="mb-2"
+                    wordGroups={[
+                      [0, 1, 2, 3, 4, 5],
+                      [7, 8, 9, 10],
+                    ]} // PATINKOBALL & SLOT MACHINE
+                  />
+                ) : (
+                  <FallbackText text="PATINKOBALL & SLOT MACHINE" className="mb-2 text-xl font-bold" />
+                )}
+                <p className="font-dotgothic16 mb-4">
+                  {t.unityandwevDesc}
+                </p>
+
+                {/* 技術標籤 */}
+                <div className="flex gap-2 items-center mb-4 flex-wrap">
+                  <span className="text-sm font-dotgothic16">技術: </span>
+                  <TechTag tech="Next.js" />
+                  <TechTag tech="TypeScript" />
+                  <TechTag tech="Unity" />
+                  <TechTag tech="WebAssembly" />
+                </div>
+
+                {/* GitHub 和 Live Demo 連結 */}
+                <div className="flex gap-4 items-center relative z-30">
+                  <a
+                    href="https://github.com/sakianoAya/slot-machine-pinball_test01"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1 text-sm font-dotgothic16 hover:opacity-80 transition-opacity bg-gray-800 px-3 py-2 rounded-md hover:bg-gray-700"
+                  >
+                    <Github size={16} />
+                    <span>GitHub</span>
+                  </a>
+                  <a
+                    href="https://v0-slot-machine-and-pinball-test01.vercel.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1 text-sm font-dotgothic16 hover:opacity-80 transition-opacity bg-gray-800 px-3 py-2 rounded-md hover:bg-gray-700"
+                  >
+                    <ExternalLink size={16} />
+                    <span>Live Demo</span>
+                  </a>
+                </div>
+              </PixelBox>
 
                 {/* spineshowcase 專案 */}
               <PixelBox className="p-6 overflow-hidden group">
